@@ -408,9 +408,9 @@ uint64_t getVnodeAtPath(const char *path, int deviceID) {
      
      */
 
-    //set offset default for iPad Air 2 iOS 11.3.1
-    uint64_t ksym_vnode_lookup = 0xfffffff0071dffac;
-    uint64_t ksym_vfs_context_current = 0xfffffff0071fe32c;
+    //set offset default for iPod 6 iOS 11.3.1
+    uint64_t ksym_vnode_lookup = 0xfffffff0071dff70;
+    uint64_t ksym_vfs_context_current = 0xfffffff0071fe2f0;
     
     printf("[Lakr] Got device id as:%d. ", deviceID);
     //selecting offsets.
@@ -448,7 +448,9 @@ uint64_t getVnodeAtPath(const char *path, int deviceID) {
             }
             break;
         case 712:
-            printf("Seems to ba an iPad Air 2 so no need to fuck it");
+            printf("Seems to ba an iPad Air 2");
+                        ksym_vnode_lookup = 0xfffffff0071dffac;
+                        ksym_vfs_context_current = 0xfffffff0071fe32c;
             break;
         case 713:
             printf("Seems to be iPad Pro (12.9-inch)\n");
@@ -562,7 +564,8 @@ uint64_t getVnodeAtPath(const char *path, int deviceID) {
             }
             break;
         default:
-            printf("Your device is not seted yet. use iPad Air 2 now for you.\n");
+            printf("Your device is not seted yet. use iPod 6 now for you.\n");
+            printf("if you need offsets open an issue in the github project");
             break;
     }
     
